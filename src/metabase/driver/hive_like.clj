@@ -49,7 +49,11 @@
   ;; validate connections upon checkout.
   (merge
    ((get-method sql-jdbc.conn/data-warehouse-connection-pool-properties :sql-jdbc) driver database)
-   {"preferredTestQuery" "SELECT 1"}))
+   ;;{"preferredTestQuery" "SELECT 1"}))
+   {"preferredTestQuery"       "Default: null"
+    "testConnectionOnCheckout" false
+    "maxIdleTime"              0}))
+   
 
 (defmethod sql-jdbc.sync/database-type->base-type :hive-like
   [_ database-type]
